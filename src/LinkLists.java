@@ -11,6 +11,10 @@
 public class LinkLists {
 
     Node head;
+    private int size;
+    LinkLists(){
+        this.size = 0;
+    }
     class Node{
 
     String data;
@@ -19,6 +23,7 @@ public class LinkLists {
     Node(String data){
         this.data = data;
         this.next = null;
+        size++;
     }
 }
 
@@ -45,6 +50,42 @@ public class LinkLists {
         currNode.next = newNode;
     }
 
+    public void deleteFirst(){
+        if(head == null){
+            System.out.println("List is empty");
+            return;
+        }
+        size--;
+        head = head.next;
+
+    }
+
+    public void deleteLast() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        size--;
+        if (head.next == null) {
+            head = null;
+            return;
+        }
+
+        Node secondLastNode = null;
+        Node lastNode = head;
+
+        while (lastNode.next != null) {
+            secondLastNode = lastNode;
+            lastNode = lastNode.next;
+        }
+
+        secondLastNode.next = null;
+    }
+
+    public int getSize(){
+        return size;
+    }
+
     // print the linked list
 
     public void printLL(){
@@ -65,9 +106,16 @@ public class LinkLists {
         list.addFirst("1");
         list.addFirst("2");
         list.addFirst("3");
-        list.printLL();
         list.addLast("5");
         list.addLast("6");
         list.printLL();
+        list.deleteFirst();
+        list.printLL();
+        list.deleteLast();
+        list.printLL();
+        System.out.println(list.getSize());
+        list.addLast("6");
+        list.printLL();
+        System.out.println(list.getSize());
     }
 }
