@@ -55,9 +55,8 @@ public class LinkLists {
             System.out.println("List is empty");
             return;
         }
-        size--;
         head = head.next;
-
+        size--;
     }
 
     public void deleteLast() {
@@ -82,9 +81,6 @@ public class LinkLists {
         secondLastNode.next = null;
     }
 
-    public int getSize(){
-        return size;
-    }
 
     // print the linked list
 
@@ -113,9 +109,5 @@ public class LinkLists {
         list.printLL();
         list.deleteLast();
         list.printLL();
-        System.out.println(list.getSize());
-        list.addLast("6");
-        list.printLL();
-        System.out.println(list.getSize());
     }
 }
