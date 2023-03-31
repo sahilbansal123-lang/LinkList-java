@@ -55,6 +55,8 @@ public class LinkedLIstQues {
                 i++;
 
             }
+
+
             prev.next = prev.next.next;
             return head;
         }
