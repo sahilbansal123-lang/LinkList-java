@@ -61,6 +61,8 @@ public class LinkedLIstQues {
             return head;
         }
 
+
+
     public static void main(String[] args) {
         LinkedLIstQues ll = new LinkedLIstQues();
         ll.addFirst(0);
