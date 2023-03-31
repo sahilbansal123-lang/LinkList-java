@@ -53,6 +53,7 @@ public class LinkedLIstQues {
             while(i != indexToFind){
                 prev = prev.next;
                 i++;
+
             }
             prev.next = prev.next.next;
             return head;
