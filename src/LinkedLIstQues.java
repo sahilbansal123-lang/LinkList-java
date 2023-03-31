@@ -104,6 +104,26 @@ public class LinkedLIstQues {
         return true;
     }
 
+
+//    Q3: detecting the cycle in the linked list
+//        we can solve it by using Floyd Warshall algorithm
+
+    public boolean hasCycle(Node head){
+        if (head == null){
+            return false;
+        }
+        Node hare = head;
+        Node turtle = head;
+        while(hare != null && hare.next != null){
+            hare = hare.next.next;
+            turtle = turtle.next;
+            if(hare == turtle){
+                return true;
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         LinkedLIstQues ll = new LinkedLIstQues();
         ll.addFirst(1);
