@@ -8,7 +8,7 @@
 //                            doubly linked (each node has references to the next and previous nodes), or
 //                            circular (the last node points back to the head node).
 
-public class LinkListsAddOperations {
+public class LinkListsAddOperations{
 
     public static class Node {
         int data;
@@ -70,7 +70,7 @@ public class LinkListsAddOperations {
         }
         Node temp = head;
         while (temp != null){
-            System.out.print(temp.data + " ");
+            System.out.print(temp.data + "->");
             temp = temp.next;
         }
 
@@ -89,6 +89,12 @@ public class LinkListsAddOperations {
 //        System.out.println(size);
 //    }
 
+    public int deleteFirst() {
+        int val = head.data;
+        head = head.next;
+//        size--;
+        return val;
+    }
 
     public static void main(String[] args) {
 
@@ -98,6 +104,8 @@ public class LinkListsAddOperations {
         list.addLast(3);
         list.addFirst(4);
         list.addMiddle(5, 2);
+        print();
+        list.deleteFirst();
         print();
         System.out.println(list.size);
     }
