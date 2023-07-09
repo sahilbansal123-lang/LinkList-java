@@ -148,22 +148,96 @@ public class LinkLists {
         return helper(head, key);
     }
 
+    public void reversingList(){
+        Node prev = null;
+        Node curr = tail = head;
+        Node Next;
+        while (curr != null){
+            Next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = Next;
+        }
+        head = prev;
+    }
 
-    public static void main(String[] args) {
+    public void deleteFromEnd(int n){
+        int i = 1;
+        Node prev = head;
+        if (size == n){
+            head = head.next;
+            return;
+        }
+        while (i < size - n){
+            prev = prev.next;
+            i++;
+        }
+        prev.next = prev.next.next;
+        return;
+    }
+
+    public Node midNode(Node head){
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
+    public Boolean checkPalindrome(){
+
+        // find mid
+        Node mid = midNode(head);
+
+        // reverse second half
+        Node prev = null;
+        Node curr = mid;
+        Node Next;
+
+        while (curr != null) {
+            Next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = Next;
+        }
+        // check for same
+        Node left = head;
+        Node right = prev;
+
+        while (right != null){
+            if (left.data != right.data){
+                return false;
+            }
+            left = left.next;
+            right = right.next;
+        }
+        return true;
+    }
+
+
+
+        public static void main(String[] args) {
 
         LinkLists list = new LinkLists();
         list.addLast(1);
         list.addLast(2);
-        list.addLast(3);
-        list.addFirst(4);
-        list.addLast(6);
-        list.addLast(7);
-        list.addMiddle(8,5);
+        list.addLast(2);
+//        list.addFirst(4);
+        list.addLast(1);
+//        list.addLast(7);
+//        list.addMiddle(8,5);
         print();
-        list.searchIteratively(8);
-        System.out.println(list.searchRecursively(8));
-        System.out.println(list.searchRecursively(10));
-
+//        list.searchIteratively(8);
+//        System.out.println(list.searchRecursively(8));
+//        System.out.println(list.searchRecursively(10));
 //        System.out.println(list.size);
+//        list.reversingList();
+//        list.deleteFromEnd(3);
+//        print();
+
+        System.out.println(list.checkPalindrome());
     }
 }
