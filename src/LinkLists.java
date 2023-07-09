@@ -8,7 +8,7 @@
 //                            doubly linked (each node has references to the next and previous nodes), or
 //                            circular (the last node points back to the head node).
 
-public class LinkListsAddOperations{
+public class LinkLists {
 
     public static class Node {
         int data;
@@ -73,7 +73,7 @@ public class LinkListsAddOperations{
             System.out.print(temp.data + "->");
             temp = temp.next;
         }
-
+        System.out.print("null");
         System.out.println();
     }
 //   public static void Size(){
@@ -90,23 +90,57 @@ public class LinkListsAddOperations{
 //    }
 
     public int deleteFirst() {
+        if (size == 0) {
+            System.out.println("List is empty");
+            return Integer.MAX_VALUE;
+        } else if (size == 1) {
+            int val = head.data;
+            head = tail = null;
+            size = 0;
+            return val;
+        }
+
         int val = head.data;
         head = head.next;
-//        size--;
+        size--;
+        return val;
+    }
+    public int deleteLast() {
+        if (size == 0) {
+            System.out.println("List is empty");
+            return Integer.MAX_VALUE;
+        } else if (size == 1) {
+            int val = head.data;
+            head = tail = null;
+            size = 0;
+            return val;
+        }
+        Node temp = head;
+        for (int i = 0; i < size - 2; i++) {
+            temp = temp.next;
+        }
+        int val = tail.data;
+        temp.next = null;
+        tail = temp;
+        size--;
         return val;
     }
 
     public static void main(String[] args) {
 
-        LinkListsAddOperations list = new LinkListsAddOperations();
+        LinkLists list = new LinkLists();
         list.addLast(1);
         list.addLast(2);
         list.addLast(3);
         list.addFirst(4);
         list.addMiddle(5, 2);
-        print();
+        list.print();
         list.deleteFirst();
-        print();
+        list.print();
+
+        list.deleteLast();
+        list.print();
+
         System.out.println(list.size);
     }
 }
