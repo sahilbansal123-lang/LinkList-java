@@ -115,6 +115,20 @@ public class LinkLists {
         return val;
     }
 
+    public void searchIteratively(int key) {
+        Node temp = head;
+        int pos = 0;
+        while (temp != null){
+            if (temp.data == key){
+                System.out.println("Key found at position: " + pos);
+                return;
+            }
+            temp = temp.next;
+            pos++;
+        }
+        System.out.println("key not found");
+    }
+
     public static void main(String[] args) {
 
         LinkLists list = new LinkLists();
@@ -122,14 +136,11 @@ public class LinkLists {
         list.addLast(2);
         list.addLast(3);
         list.addFirst(4);
-        list.addMiddle(5, 2);
-        list.print();
-        list.deleteFirst();
-        list.print();
-
-        list.deleteLast();
-        list.print();
-
-        System.out.println(list.size);
+        list.addLast(6);
+        list.addLast(7);
+        list.addMiddle(8,5);
+        print();
+        list.searchIteratively(8);
+//        System.out.println(list.size);
     }
 }
