@@ -129,6 +129,26 @@ public class LinkLists {
         System.out.println("key not found");
     }
 
+
+    public int helper(Node head, int key) {
+        if (head == null){
+            return -1;
+        }
+        if (head.data == key){
+            return 0;
+        }
+
+        int idx = helper(head.next, key);
+        if (idx == -1){
+            return -1;
+        }
+        return idx+1;
+    }
+    public int searchRecursively(int key) {
+        return helper(head, key);
+    }
+
+
     public static void main(String[] args) {
 
         LinkLists list = new LinkLists();
@@ -141,6 +161,9 @@ public class LinkLists {
         list.addMiddle(8,5);
         print();
         list.searchIteratively(8);
+        System.out.println(list.searchRecursively(8));
+        System.out.println(list.searchRecursively(10));
+
 //        System.out.println(list.size);
     }
 }
