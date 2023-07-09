@@ -76,18 +76,7 @@ public class LinkLists {
         System.out.print("null");
         System.out.println();
     }
-//   public static void Size(){
-//        int size = 0;
-//        if (head == null){
-//            System.out.println("Size of list is: " + size);
-//        }
-//        Node temp = head;
-//        while (temp != null){
-//            temp = temp.next;
-//            size++;
-//        }
-//        System.out.println(size);
-//    }
+
 
     public int deleteFirst() {
         if (size == 0) {
