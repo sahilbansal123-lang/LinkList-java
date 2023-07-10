@@ -1,4 +1,4 @@
-
+package LinkListJava;
 //               Linked List: is a linear data structure in which elements are stored in nodes, and each node points to
 //                            the next node in the list. In a linked list, each node consists of two parts: a data part
 //                            that stores the value of the element, and a reference part that points to the next node in the list.
@@ -12,9 +12,9 @@ public class LinkLists {
 
     public static class Node {
         int data;
-        Node next;
+        public Node next;
 
-        Node(int data){
+        public Node(int data){
             this.data = data;
             this.next = null;
         }
@@ -64,7 +64,7 @@ public class LinkLists {
         temp.next = newNode;
     }
 
-    public static void print(){
+    public void print(){
         if (head == null){
             System.out.println("list is empty");
         }
@@ -229,7 +229,7 @@ public class LinkLists {
         list.addLast(1);
 //        list.addLast(7);
 //        list.addMiddle(8,5);
-        print();
+        list.print();
 //        list.searchIteratively(8);
 //        System.out.println(list.searchRecursively(8));
 //        System.out.println(list.searchRecursively(10));
