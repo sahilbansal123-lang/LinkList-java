@@ -4,11 +4,9 @@ import static LinkListJava.LinkLists.head;
 
 public class CycleDetectionAndRemoval {
 
-    LinkLists.Node slow = head;
-    LinkLists.Node fast = head;
     public boolean detectCycle(){ // Floyd Cycle Finding Algorithm
-
-
+        LinkLists.Node slow = head;
+        LinkLists.Node fast = head;
         while(fast != null && fast.next != null){
             slow = slow.next;
             fast = fast.next.next;
@@ -21,21 +19,29 @@ public class CycleDetectionAndRemoval {
     }
 
     public void removeCycle(){
-        LinkLists.Node prev = null;
-        if (detectCycle()){
-            slow = head;
-            while (slow == fast) {
-                slow = slow.next;
-                prev = fast;
-                fast = fast.next;
+        LinkLists.Node slow = head;
+        LinkLists.Node fast = head;
+        boolean cycle = false;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
 
-                if (slow == fast){
-                    prev.next = null;
-                    return;
-                }
+            if (slow == fast){
+                cycle = true;
+                break;
             }
         }
-
+        if (!cycle) {
+            return;
+        }
+        slow = head;
+        LinkLists.Node prev = null;
+            while (slow != fast) {
+                prev = fast;
+                slow = slow.next;
+                fast = fast.next;
+            }
+            prev.next = null;
     }
 
 
@@ -52,11 +58,14 @@ public class CycleDetectionAndRemoval {
 //        ll.print();
 //        System.out.println(ll.checkPalindrome());
         head = new LinkLists.Node(1);
-        head.next = new LinkLists.Node(2);
+        LinkLists.Node temp = new LinkLists.Node(2);
+        head.next = temp;
         head.next.next = new LinkLists.Node(3);
-        head.next.next.next = head;
+        head.next.next.next = new LinkLists.Node(4);
+        head.next.next.next.next = temp;
         System.out.println( list.detectCycle());
         list.removeCycle();
-        ll.print();
+        System.out.println( list.detectCycle());
+
     }
 }
