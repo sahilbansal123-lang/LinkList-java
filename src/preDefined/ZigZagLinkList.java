@@ -1,8 +1,12 @@
 package preDefined;
+
 import LinkListJava.LinkLists;
 
-public class ZigZagLinkList {
-    private LinkLists.Node getMid(LinkLists.Node head) {
+public class ZigZagLinkList extends LinkLists{
+
+    public void zigzagList() {
+
+        // Calculate MID
         LinkLists.Node slow = head;
         LinkLists.Node fast = head.next;
 
@@ -11,13 +15,7 @@ public class ZigZagLinkList {
             slow = slow.next;
             fast = fast.next.next;
         }
-        return slow;
-    }
-    public void zigzagList(LinkLists.Node head) {
-
-        // Calculate MID
-        LinkLists.Node mid = getMid(head);
-
+        LinkLists.Node mid = slow;
         // Reverse Second Half
         LinkLists.Node curr = mid.next;
         mid.next = null;
@@ -40,22 +38,26 @@ public class ZigZagLinkList {
             nextL = left.next;
             left.next = right;
             nextR = right.next;
-            right.next = left;
+            right.next = nextL;
 
-            right = nextR;
             left = nextL;
+            right = nextR;
         }
     }
 
 
 
     public static void main(String[] args) {
-        LinkLists list = new LinkLists();
-        list.addFirst(1);
-        list.addFirst(2);
-        list.addFirst(3);
-        list.addFirst(4);
-        list.addFirst(5);
-        list.addFirst(6);
+//        LinkLists list = new LinkLists();
+        ZigZagLinkList ll = new ZigZagLinkList();
+        ll.addFirst(1);
+        ll.addFirst(2);
+        ll.addFirst(3);
+        ll.addFirst(4);
+        ll.addFirst(5);
+        ll.addFirst(6);
+        ll.print();
+        ll.zigzagList();
+        ll.print();
     }
 }
