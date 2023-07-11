@@ -13,19 +13,38 @@ public class ZigZagLinkList {
         }
         return slow;
     }
-    public LinkLists.Node zigzagList(LinkLists.Node head) {
+    public void zigzagList(LinkLists.Node head) {
 
         // Calculate MID
         LinkLists.Node mid = getMid(head);
+
         // Reverse Second Half
-        LinkLists.Node rightHead = mid.next;
+        LinkLists.Node curr = mid.next;
         mid.next = null;
-        LinkLists.Node nextRig = zigzagList(rightHead);
-        LinkLists.Node nextLef = zigzagList(head);
+        LinkLists.Node prev = null;
+        LinkLists.Node nxt;
 
+        while (curr != null){
+            nxt = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nxt;
+        }
 
+        LinkLists.Node left = head;
+        LinkLists.Node right = prev;
+        LinkLists.Node nextL, nextR;
 
-        return mid;
+        // Alternate ZigZag Merging
+        while (left != null && right != null){
+            nextL = left.next;
+            left.next = right;
+            nextR = right.next;
+            right.next = left;
+
+            right = nextR;
+            left = nextL;
+        }
     }
 
 
