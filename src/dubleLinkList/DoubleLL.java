@@ -1,4 +1,4 @@
-import LinkListJava.LinkLists;
+package dubleLinkList;
 
 public class DoubleLL {
 
