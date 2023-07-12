@@ -55,7 +55,7 @@ public class ZigZagLinkList extends LinkLists{
         ll.addFirst(3);
         ll.addFirst(4);
         ll.addFirst(5);
-        ll.addFirst(6);
+//        ll.addFirst(6);
         ll.print();
         ll.zigzagList();
         ll.print();
