@@ -1,7 +1,7 @@
 public class LinkedLIstQues {
 
     Node head;
-    class Node {
+    static class Node {
         int data;
         Node next;
         Node(int data) {
@@ -124,15 +124,49 @@ public class LinkedLIstQues {
         return true;
     }
 
+    public Node intersectionOf2LL(Node head1, Node head2){
+        while(head2 != null){
+            Node temp = head1;
+            while (temp != null){
+                if (temp == head2){
+                    return head2;
+                }
+                temp = temp.next;
+            }
+            head2 = head2.next;
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         LinkedLIstQues ll = new LinkedLIstQues();
-        ll.addFirst(1);
-        ll.addFirst(2);
-        ll.addFirst(2);
-        ll.addFirst(1);
-        ll.printLL();
-//        ll.RemoveFromLast(ll.head, 2);
-        ll.printLL();
-        System.out.println(ll.isPalindrome(ll.head));
+//        ll.addFirst(1);
+//        ll.addFirst(2);
+//        ll.addFirst(2);
+//        ll.addFirst(1);
+//        ll.printLL();
+////        ll.RemoveFromLast(ll.head, 2);
+//        ll.printLL();
+//        System.out.println(ll.isPalindrome(ll.head));
+
+        Node head1, head2;
+        head1 = new Node(10);
+
+        head2 = new Node(3);
+        head2.next = new Node(1);
+        head2.next.next = new Node(2);
+
+        head1.next = new Node(4);
+        head1.next.next = new Node(5);
+        Node newNode = new Node(15);
+        head1.next.next.next = newNode;
+        head2.next.next.next = newNode;
+
+        head1.next.next.next.next = new Node(20);
+        head1.next.next.next.next.next = null;
+
+        Node intersectionPoint = ll.intersectionOf2LL(head1, head2);
+        System.out.println(intersectionPoint.data);
+//        head2.next = new Node(1);
     }
 }
