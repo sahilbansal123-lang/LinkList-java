@@ -138,35 +138,61 @@ public class LinkedLIstQues {
         return null;
     }
 
+    public void deleteNnodesAfterM(Node head, int m, int n){
+        Node curr = head;
+        Node t = head;
+        int count;
+        for (count = 1; count < m && curr != null; count++){
+            curr = curr.next;
+
+            if (curr == null){
+                return;
+            }
+            t = curr.next;
+
+            for (count = 1; count <= n && t != null; count++){
+                Node temp = t;
+                t = t.next;
+            }
+
+            curr.next = t;
+            curr = t;
+        }
+
+    }
+
     public static void main(String[] args) {
         LinkedLIstQues ll = new LinkedLIstQues();
-//        ll.addFirst(1);
-//        ll.addFirst(2);
-//        ll.addFirst(2);
-//        ll.addFirst(1);
-//        ll.printLL();
+        ll.addFirst(1);
+        ll.addFirst(2);
+        ll.addFirst(2);
+        ll.addFirst(1);
+        ll.printLL();
+        ll.deleteNnodesAfterM(1, 2);
+        System.out.println();
+        ll.printLL();
 ////        ll.RemoveFromLast(ll.head, 2);
 //        ll.printLL();
 //        System.out.println(ll.isPalindrome(ll.head));
 
-        Node head1, head2;
-        head1 = new Node(10);
-
-        head2 = new Node(3);
-        head2.next = new Node(1);
-        head2.next.next = new Node(2);
-
-        head1.next = new Node(4);
-        head1.next.next = new Node(5);
-        Node newNode = new Node(15);
-        head1.next.next.next = newNode;
-        head2.next.next.next = newNode;
-
-        head1.next.next.next.next = new Node(20);
-        head1.next.next.next.next.next = null;
-
-        Node intersectionPoint = ll.intersectionOf2LL(head1, head2);
-        System.out.println(intersectionPoint.data);
+//        Node head1, head2;
+//        head1 = new Node(10);
+//
+//        head2 = new Node(3);
+//        head2.next = new Node(1);
+//        head2.next.next = new Node(2);
+//
+//        head1.next = new Node(4);
+//        head1.next.next = new Node(5);
+//        Node newNode = new Node(15);
+//        head1.next.next.next = newNode;
+//        head2.next.next.next = newNode;
+//
+//        head1.next.next.next.next = new Node(20);
+//        head1.next.next.next.next.next = null;
+//
+//        Node intersectionPoint = ll.intersectionOf2LL(head1, head2);
+//        System.out.println(intersectionPoint.data);
 //        head2.next = new Node(1);
     }
 }
